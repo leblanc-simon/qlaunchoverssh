@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/images">
+        <file>logo.png</file>
+        <file>applet-gnome-sshmenu-icone-6595-16.png</file>
+        <file>cadenas-ouvert-icone-4601-16.png</file>
+    </qresource>
+</RCC>

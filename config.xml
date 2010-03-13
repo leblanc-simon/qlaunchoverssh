@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<item id="database">./qlaunchoverssh.sqlite</item>
+	<item id="known_hosts">./ssh/known_hosts</item>
+	<item id="log">./qlaunchoverssh.log</item>
+	<item id="private_key">./ssh/id_dsa</item>
+	<item id="passphrase">1</item>
+</config>
