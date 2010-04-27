@@ -11,6 +11,7 @@ public:
     static void debug(QString msg);
     static void warning(QString msg);
     static void error(QString msg);
+    static void info(QString msg);
 };
 
 #endif // KLOG_H

@@ -6,6 +6,11 @@
 #include <QTextStream>
 #include <QDateTime>
 
+/**
+ * Write the message into the log file
+ * @param   QString     msg     the message to write
+ * @param   QString     type    the type of log
+ */
 void Klog::write(QString msg, QString type)
 {
     QDateTime date = QDateTime(QDateTime::currentDateTime());
@@ -23,6 +28,10 @@ void Klog::write(QString msg, QString type)
 }
 
 
+/**
+ * Write a debug message into the log file (only if the program is make with -DDEBUG)
+ * @param   QString     msg     the messageto write
+ */
 void Klog::debug(QString msg)
 {
 #ifdef DEBUG
@@ -31,13 +40,31 @@ void Klog::debug(QString msg)
 }
 
 
+/**
+ * Write a warning message into the log file
+ * @param   QString     msg     the message to write
+ */
 void Klog::warning(QString msg)
 {
     Klog::write(msg, "warning");
 }
 
 
+/**
+ * Write an error message into the log file
+ * @param   QString     msg     the message to write
+ */
 void Klog::error(QString msg)
 {
     Klog::write(msg, "ERROR");
+}
+
+
+/**
+ * Write an info message into the log file
+ * @param   QString     msg     the message to write
+ */
+void Klog::info(QString msg)
+{
+    Klog::write(msg, "INFO");
 }

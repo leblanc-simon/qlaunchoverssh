@@ -76,16 +76,16 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-mG29Sgbfid,guid=910bde59eeb7dab808b7e62f4b9b62d5</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-HY3L9AvRE0,guid=fb55af159224827b1a89afcd4bd743be</value>
     <value type="QString">DESKTOP_SESSION=default</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">GDMSESSION=default</value>
     <value type="QString">GDM_LANG=fr_FR.UTF-8</value>
     <value type="QString">GDM_XSERVER_LOCATION=local</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_PID=6651</value>
-    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-utlJYo/socket</value>
-    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-YiPVvK/S.gpg-agent:6736:1</value>
+    <value type="QString">GNOME_KEYRING_PID=7246</value>
+    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-EnwV3h/socket</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-RsKYoz/S.gpg-agent:7330:1</value>
     <value type="QString">GTK_MODULES=gail:atk-bridge</value>
     <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/home/leviathan/.gtkrc-1.2-gnome2</value>
     <value type="QString">HOME=/home/leviathan</value>
@@ -96,28 +96,28 @@
     <value type="QString">MESA_NO_ASM=1</value>
     <value type="QString">ORBIT_SOCKETDIR=/tmp/orbit-leviathan</value>
     <value type="QString">PATH=/home/leviathan/Programmes/qtsdk-2010.01/qt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/lib/jvm/java-6-sun/bin</value>
-    <value type="QString">PWD=/home/leviathan/Programmes/qtsdk-2010.01/bin</value>
+    <value type="QString">PWD=/home/leviathan</value>
     <value type="QString">QTDIR=/home/leviathan/Programmes/qtsdk-2010.01/qt</value>
-    <value type="QString">SESSION_MANAGER=local/leviathan-desktop:/tmp/.ICE-unix/6662</value>
+    <value type="QString">SESSION_MANAGER=local/leviathan-desktop:/tmp/.ICE-unix/7256</value>
     <value type="QString">SHELL=/bin/bash</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-utlJYo/ssh</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-EnwV3h/ssh</value>
     <value type="QString">USER=leviathan</value>
     <value type="QString">USERNAME=leviathan</value>
     <value type="QString">WINDOWPATH=7</value>
     <value type="QString">XAUTHORITY=/home/leviathan/.Xauthority</value>
     <value type="QString">XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString">XDG_SESSION_COOKIE=9f0757f911df98da9b723a714923485b-1268474580.398649-1350754475</value>
+    <value type="QString">XDG_SESSION_COOKIE=9f0757f911df98da9b723a714923485b-1272398782.92303-122736280</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
-    <value type="QString">/home/leviathan/Documents/QLaunchOverSSH/QLaunchOverSSH.pro</value>
+    <value type="QString">/home/leviathan/Documents/QLaunchOverSSH/trunk/QLaunchOverSSH.pro</value>
     <value type="QString">-spec</value>
     <value type="QString">linux-g++-64</value>
     <value type="QString">-r</value>
     <value type="QString">CONFIG+=debug</value>
    </valuelist>
    <value key="abstractProcess.command" type="QString">/home/leviathan/Programmes/qtsdk-2010.01/qt/bin/qmake</value>
-   <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">/home/leviathan/Documents/QLaunchOverSSH</value>
+   <value key="abstractProcess.enabled" type="bool">false</value>
+   <value key="abstractProcess.workingDirectory" type="QString">/home/leviathan/Documents/QLaunchOverSSH/trunk</value>
   </valuemap>
  </data>
  <data>
@@ -125,16 +125,16 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-mG29Sgbfid,guid=910bde59eeb7dab808b7e62f4b9b62d5</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-HY3L9AvRE0,guid=fb55af159224827b1a89afcd4bd743be</value>
     <value type="QString">DESKTOP_SESSION=default</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">GDMSESSION=default</value>
     <value type="QString">GDM_LANG=fr_FR.UTF-8</value>
     <value type="QString">GDM_XSERVER_LOCATION=local</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_PID=6651</value>
-    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-utlJYo/socket</value>
-    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-YiPVvK/S.gpg-agent:6736:1</value>
+    <value type="QString">GNOME_KEYRING_PID=7246</value>
+    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-EnwV3h/socket</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-RsKYoz/S.gpg-agent:7330:1</value>
     <value type="QString">GTK_MODULES=gail:atk-bridge</value>
     <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/home/leviathan/.gtkrc-1.2-gnome2</value>
     <value type="QString">HOME=/home/leviathan</value>
@@ -145,17 +145,17 @@
     <value type="QString">MESA_NO_ASM=1</value>
     <value type="QString">ORBIT_SOCKETDIR=/tmp/orbit-leviathan</value>
     <value type="QString">PATH=/home/leviathan/Programmes/qtsdk-2010.01/qt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/lib/jvm/java-6-sun/bin</value>
-    <value type="QString">PWD=/home/leviathan/Programmes/qtsdk-2010.01/bin</value>
+    <value type="QString">PWD=/home/leviathan</value>
     <value type="QString">QTDIR=/home/leviathan/Programmes/qtsdk-2010.01/qt</value>
-    <value type="QString">SESSION_MANAGER=local/leviathan-desktop:/tmp/.ICE-unix/6662</value>
+    <value type="QString">SESSION_MANAGER=local/leviathan-desktop:/tmp/.ICE-unix/7256</value>
     <value type="QString">SHELL=/bin/bash</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-utlJYo/ssh</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-EnwV3h/ssh</value>
     <value type="QString">USER=leviathan</value>
     <value type="QString">USERNAME=leviathan</value>
     <value type="QString">WINDOWPATH=7</value>
     <value type="QString">XAUTHORITY=/home/leviathan/.Xauthority</value>
     <value type="QString">XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString">XDG_SESSION_COOKIE=9f0757f911df98da9b723a714923485b-1268474580.398649-1350754475</value>
+    <value type="QString">XDG_SESSION_COOKIE=9f0757f911df98da9b723a714923485b-1272398782.92303-122736280</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
@@ -163,7 +163,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString">/usr/bin/make</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">/home/leviathan/Documents/QLaunchOverSSH</value>
+   <value key="abstractProcess.workingDirectory" type="QString">/home/leviathan/Documents/QLaunchOverSSH/trunk</value>
   </valuemap>
  </data>
  <data>
@@ -171,16 +171,16 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-mG29Sgbfid,guid=910bde59eeb7dab808b7e62f4b9b62d5</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-HY3L9AvRE0,guid=fb55af159224827b1a89afcd4bd743be</value>
     <value type="QString">DESKTOP_SESSION=default</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">GDMSESSION=default</value>
     <value type="QString">GDM_LANG=fr_FR.UTF-8</value>
     <value type="QString">GDM_XSERVER_LOCATION=local</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_PID=6651</value>
-    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-utlJYo/socket</value>
-    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-YiPVvK/S.gpg-agent:6736:1</value>
+    <value type="QString">GNOME_KEYRING_PID=7246</value>
+    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-EnwV3h/socket</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-RsKYoz/S.gpg-agent:7330:1</value>
     <value type="QString">GTK_MODULES=gail:atk-bridge</value>
     <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/home/leviathan/.gtkrc-1.2-gnome2</value>
     <value type="QString">HOME=/home/leviathan</value>
@@ -191,17 +191,17 @@
     <value type="QString">MESA_NO_ASM=1</value>
     <value type="QString">ORBIT_SOCKETDIR=/tmp/orbit-leviathan</value>
     <value type="QString">PATH=/home/leviathan/Programmes/qtsdk-2010.01/qt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/lib/jvm/java-6-sun/bin</value>
-    <value type="QString">PWD=/home/leviathan/Programmes/qtsdk-2010.01/bin</value>
+    <value type="QString">PWD=/home/leviathan</value>
     <value type="QString">QTDIR=/home/leviathan/Programmes/qtsdk-2010.01/qt</value>
-    <value type="QString">SESSION_MANAGER=local/leviathan-desktop:/tmp/.ICE-unix/6662</value>
+    <value type="QString">SESSION_MANAGER=local/leviathan-desktop:/tmp/.ICE-unix/7256</value>
     <value type="QString">SHELL=/bin/bash</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-utlJYo/ssh</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-EnwV3h/ssh</value>
     <value type="QString">USER=leviathan</value>
     <value type="QString">USERNAME=leviathan</value>
     <value type="QString">WINDOWPATH=7</value>
     <value type="QString">XAUTHORITY=/home/leviathan/.Xauthority</value>
     <value type="QString">XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString">XDG_SESSION_COOKIE=9f0757f911df98da9b723a714923485b-1268474580.398649-1350754475</value>
+    <value type="QString">XDG_SESSION_COOKIE=9f0757f911df98da9b723a714923485b-1272398782.92303-122736280</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">true</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
@@ -210,7 +210,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString">/usr/bin/make</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">/home/leviathan/Documents/QLaunchOverSSH</value>
+   <value key="abstractProcess.workingDirectory" type="QString">/home/leviathan/Documents/QLaunchOverSSH/trunk</value>
    <value key="cleanConfig" type="bool">true</value>
    <valuelist key="makeargs" type="QVariantList">
     <value type="QString">clean</value>
