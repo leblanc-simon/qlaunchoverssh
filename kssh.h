@@ -13,6 +13,7 @@ private:
 
 protected:
     QString m_command;
+    QString m_return;
 
     void    init();
 
@@ -37,6 +38,7 @@ public:
     /* Action method */
     bool    launch(QString command);
     QString getLastCommand();
+    QString getReturn();
 
 };
 

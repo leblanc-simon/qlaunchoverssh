@@ -39,6 +39,7 @@ Kssh::~Kssh()
 void Kssh::init()
 {
     this->m_command = QString("");
+    this->m_return  = QString("");
 }
 
 
@@ -402,6 +403,18 @@ bool Kssh::launch(QString command)
         return false;
     } else {
         Klog::debug(QString("Execution de la commande : ") + this->m_command);
+
+        // read the buffer
+        int nb_bytes = 0;
+        struct ssh_buffer_struct* buffer = buffer_new();
+
+        nb_bytes = channel_read_buffer(channel, buffer, 0, 0);
+
+        if(nb_bytes != 0){
+            char *buf = new char[nb_bytes + 1];
+            memcpy(buf, buffer_get(buffer), nb_bytes);
+            this->m_return = QString(buf);
+        }
     }
 
     return true;
@@ -415,4 +428,14 @@ bool Kssh::launch(QString command)
 QString Kssh::getLastCommand()
 {
     return this->m_command;
+}
+
+
+/**
+ * Return the latest return of the latest command
+ * @return  QString     the latest return of the latest command
+ */
+QString Kssh::getReturn()
+{
+    return this->m_return;
 }
