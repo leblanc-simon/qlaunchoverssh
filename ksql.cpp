@@ -2,6 +2,7 @@
 #include "kconfig.h"
 
 #include <QFile>
+#include <QString>
 
 QString      Ksql::m_filename = "";
 QSqlDatabase Ksql::m_db       = QSqlDatabase::addDatabase("QSQLITE");
@@ -23,13 +24,15 @@ void Ksql::setFilename(QString filename)
 {
     // Check if the filename isn't empty
     if (filename == "") {
+        close();
         throw QString("KSql Exception : (setFilename) The filename to load can't be empty");
     }
 
     // Check if the file exist
     QFile file(filename);
     if (file.exists() == false) {
-        throw QString("KSql Exception : (setFilename) The file" + filename + " doesn't exist !");
+        close();
+        throw QString("KSql Exception : (setFilename) The file %1 doesn't exist !").arg(filename);
     }
 
     m_filename = filename;
@@ -45,12 +48,14 @@ void Ksql::connect()
 
     // Check if the name of database is OK
     if (m_filename == "") {
+        close();
         throw QString("KSql Exception : (connect) The filename is empty !");
     }
 
     m_db.setDatabaseName(m_filename);
 
     if (m_db.open() == false) {
+        close();
         throw QString("KSql Exception : (connect) unable to connect in the DB !");
     }
 
@@ -71,6 +76,7 @@ QSqlQuery Ksql::exec(QString query)
     }
 
     if (query == "") {
+        close();
         throw QString("KSql Exception : (exec) The query can't be empty !");
     }
 

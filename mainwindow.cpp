@@ -230,7 +230,19 @@ void MainWindow::launchCommand()
             // command ok
             Klog::info(ssh.getLastCommand());
             Klog::info(ssh.getReturn());
-            QMessageBox::information(this, tr("Commande exécutée"), tr("Votre commande a été exécuté avec succès."));
+
+            // show informative box
+            QMessageBox box;
+            QIcon icon;
+            icon.addPixmap(QPixmap(QString::fromUtf8(":/new/images/applet-gnome-sshmenu-icone-6595-16.png")));
+            box.setText(tr("Votre commande a été exécuté avec succès."));
+            box.setDetailedText(ssh.getReturn());
+            box.setStandardButtons(QMessageBox::Ok);
+            box.setDefaultButton(QMessageBox::Ok);
+            box.setIcon(QMessageBox::Information);
+            box.setWindowTitle(tr("Commande exécutée"));
+            box.setWindowIcon(icon);
+            box.exec();
 
             // set the combobox to null
             this->m_ui->combo_command->setCurrentIndex(0);
