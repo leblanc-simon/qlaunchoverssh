@@ -16,8 +16,8 @@ public:
     ~About();
 
 protected:
-    void changeEvent(QEvent *e);
-    void closeEvent(QCloseEvent *e);
+    void changeEvent(QEvent *event);
+    void closeEvent(QCloseEvent *event);
     void init();
 
 private:

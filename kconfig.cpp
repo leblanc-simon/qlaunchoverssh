@@ -15,6 +15,10 @@ QString Kconfig::m_known_hosts  = QString(KCONFIG_DEFAULT_KNOWNHOSTS);
 QString Kconfig::m_private_key  = QString(KCONFIG_DEFAULT_PRIVATEKEY);
 bool    Kconfig::m_passphrase   = KCONFIG_DEFAULT_PASSPHRASE;
 
+/**
+ * Load the config file in the program
+ * @param   QString     filename    the filename of the config
+ */
 bool Kconfig::load(QString filename)
 {
     QDomDocument doc;

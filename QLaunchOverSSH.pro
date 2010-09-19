@@ -29,7 +29,7 @@ FORMS += mainwindow.ui \
     about.ui \
     passphrase.ui
 LIBS += -lssh \
-    -L/home/leviathan/packaging/libssh-0.4.0/include
+    -L/home/leviathan/compilation/libssh-0.4.6/include
 DEFINES += DEBUG
 RESOURCES += ressources.qrc
 OTHER_FILES += README \

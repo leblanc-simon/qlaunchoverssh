@@ -19,10 +19,10 @@ About::~About()
     delete m_ui;
 }
 
-void About::changeEvent(QEvent *e)
+void About::changeEvent(QEvent *event)
 {
-    QDialog::changeEvent(e);
-    switch (e->type()) {
+    QDialog::changeEvent(event);
+    switch (event->type()) {
     case QEvent::LanguageChange:
         m_ui->retranslateUi(this);
         break;
@@ -38,7 +38,8 @@ void About::init()
 }
 
 
-void About::closeEvent(QCloseEvent *e)
+void About::closeEvent(QCloseEvent *event)
 {
     this->m_parent->setEnable();
+    QDialog::closeEvent(event);
 }

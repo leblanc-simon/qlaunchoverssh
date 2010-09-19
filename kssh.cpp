@@ -4,11 +4,7 @@
 #include "libssh/libssh.h"
 
 #include <QByteArray>
-
-/* for libssh 0.4, in 0.5 it's not required */
-#include <QFile>
-#include <QIODevice>
-#include <QTextStream>
+#include <QChar>
 
 /* Constructor and destructor */
 
@@ -39,6 +35,7 @@ Kssh::~Kssh()
 void Kssh::init()
 {
     this->m_command = QString("");
+    this->m_return  = QString("");
 }
 
 
@@ -232,14 +229,7 @@ bool Kssh::authenticateKey(QString private_key, QString password)
     ssh_private_key private_key_to_use;
     int auth;
 
-    // get the private key
-    int type = this->privatekey_type_from_file(private_key);
-    if (type == 0) {
-        Klog::error(QString("Invalid format of private key."));
-        return false;
-    }
-
-    private_key_to_use = privatekey_from_file(this->m_session, private_key.toStdString().c_str(), type, password.toStdString().c_str());
+    private_key_to_use = privatekey_from_file(this->m_session, private_key.toStdString().c_str(), 0, password.toStdString().c_str());
     if (private_key_to_use == NULL) {
         Klog::error(QString("Fatal error while get the private key : ") + QString(ssh_get_error(this->m_session)));
         return false;
@@ -337,38 +327,6 @@ bool Kssh::authenticatePasswordInteractive(QString password)
     return false;
 }
 
-
-/**
- * Return the type of private key
- * @param   QString private_key the file of the private key to check
- * @return  int                 the type of the key (1: DSA, 2: RSA) or 0 if error
- */
-int Kssh::privatekey_type_from_file(QString private_key)
-{
-    QFile file(private_key);
-    QString line = QString("");
-
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream in(&file);
-        if (!in.atEnd()) {
-            line = in.readLine();
-        }
-
-        if (line == "-----BEGIN DSA PRIVATE KEY-----") {
-            file.close();
-            return 1;
-        }
-
-        if (line == "-----BEGIN RSA PRIVATE KEY-----") {
-            file.close();
-            return 2;
-        }
-    }
-
-    return 0;
-}
-
-
 /* Action method */
 
 /**
@@ -387,11 +345,20 @@ bool Kssh::launch(QString command)
 
     if (channel == NULL) {
         Klog::error(QString("Impossible to open a new channel") + QString(ssh_get_error(this->m_session)));
+
+        ssh_disconnect(this->m_session);
+        ssh_finalize();
+
         return false;
     }
 
     if (channel_open_session(channel) == SSH_ERROR) {
         Klog::error(QString("Impossible to open a session in the channel") + QString(ssh_get_error(this->m_session)));
+
+        channel_close(channel);
+        ssh_disconnect(this->m_session);
+        ssh_finalize();
+
         return false;
     }
 
@@ -399,9 +366,36 @@ bool Kssh::launch(QString command)
 
     if (result == SSH_ERROR) {
         Klog::error(QString("Impossible to launch command : ") + QString(ssh_get_error(this->m_session)));
+
+        channel_close(channel);
+        ssh_disconnect(this->m_session);
+        ssh_finalize();
+
         return false;
     } else {
         Klog::debug(QString("Execution de la commande : ") + this->m_command);
+
+        // read the buffer
+        char *buf = NULL;
+        buf = new char[512];
+        int rc = 0;
+
+        do {
+            if (channel_is_open(channel)) {
+                rc = channel_read(channel, buf, sizeof(buf), 0);
+                if (rc > 0) {
+                    this->m_return += QString::fromLatin1(buf, rc);
+                }
+            }
+        } while (rc > 0);
+
+        delete[] buf;
+
+        channel_send_eof(channel);
+        channel_close(channel);
+
+        ssh_disconnect(this->m_session);
+        ssh_finalize();
     }
 
     return true;
@@ -415,4 +409,14 @@ bool Kssh::launch(QString command)
 QString Kssh::getLastCommand()
 {
     return this->m_command;
+}
+
+
+/**
+ * Return the latest return of the latest command
+ * @return  QString     the latest return of the latest command
+ */
+QString Kssh::getReturn()
+{
+    return this->m_return;
 }

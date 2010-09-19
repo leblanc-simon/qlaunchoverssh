@@ -13,6 +13,7 @@ private:
 
 protected:
     QString m_command;
+    QString m_return;
 
     void    init();
 
@@ -23,7 +24,6 @@ protected:
     bool    authenticateKey(QString private_key, QString password = "");
     bool    authenticatePassword(QString password);
     bool    authenticatePasswordInteractive(QString password);
-    int     privatekey_type_from_file(QString private_key); /* the libssh 0.4 doesn't contain this method -> go for 0.5 */
 
 public:
     /* Constructor and destructor */
@@ -37,6 +37,7 @@ public:
     /* Action method */
     bool    launch(QString command);
     QString getLastCommand();
+    QString getReturn();
 
 };
 

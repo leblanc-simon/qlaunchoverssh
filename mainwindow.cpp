@@ -12,6 +12,7 @@
 #include "kssh.h"
 #include "kconfig.h"
 #include "kcommand.h"
+#include "klog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -227,7 +228,24 @@ void MainWindow::launchCommand()
     if (ssh.connect(command.getServer(), command.getLogin(), private_key, password)) {
         if (ssh.launch(command.getCommand() + parameters)) {
             // command ok
-            QMessageBox::information(this, tr("Commande exécutée"), tr("Votre commande a été exécuté avec succès."));
+            Klog::info(ssh.getLastCommand());
+            Klog::info(ssh.getReturn());
+
+            // show informative box
+            QMessageBox box;
+            QIcon icon;
+            icon.addPixmap(QPixmap(QString::fromUtf8(":/new/images/applet-gnome-sshmenu-icone-6595-16.png")));
+            box.setText(tr("Votre commande a été exécuté avec succès."));
+            box.setDetailedText(ssh.getReturn());
+            box.setStandardButtons(QMessageBox::Ok);
+            box.setDefaultButton(QMessageBox::Ok);
+            box.setIcon(QMessageBox::Information);
+            box.setWindowTitle(tr("Commande exécutée"));
+            box.setWindowIcon(icon);
+            box.exec();
+
+            // set the combobox to null
+            this->m_ui->combo_command->setCurrentIndex(0);
         } else {
             // command nok
             QMessageBox::critical(this, tr("Erreur commande"), tr("Erreur lors de l'exécution de la commande. Veuillez regarder les logs pour plus de détails."));
