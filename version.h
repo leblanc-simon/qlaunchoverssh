@@ -26,20 +26,24 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVE
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef KLOG_H
-#define KLOG_H
+#ifndef VERSION_H
+#define VERSION_H
 
-#include <QString>
+#define VER_FILEVERSION             1,2,1,0
+#define VER_FILEVERSION_STR         "1.2.1.0\0"
 
-class Klog
-{
-protected:
-    static void write(QString msg, QString type);
-public:
-    static void debug(QString msg);
-    static void warning(QString msg);
-    static void error(QString msg);
-    static void info(QString msg);
-};
+#define VER_PRODUCTVERSION          1,2,1,0
+#define VER_PRODUCTVERSION_STR      "1.2.1\0"
 
-#endif // KLOG_H
+#define VER_COMPANYNAME_STR         "Simon Leblanc"
+#define VER_LEGALCOPYRIGHT_STR      "Copyright (c) 2010 Simon Leblanc (licence BSD)"
+#define VER_COMPANYDOMAIN_STR       "http://www.leblanc-simon.fr"
+#define VER_FILEDESCRIPTION_STR     "Launch command over SSH"
+#define VER_INTERNALNAME_STR        "QLaunchOverSSH"
+#define VER_LEGALTRADEMARKS1_STR    "Licence BSD"
+#define VER_LEGALTRADEMARKS2_STR    VER_LEGALTRADEMARKS1_STR
+#define VER_ORIGINALFILENAME_STR    "QLaunchOverSSH.exe"
+#define VER_PRODUCTNAME_STR         "QLaunchOverSSH"
+
+
+#endif // VERSION_H
