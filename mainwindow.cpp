@@ -271,9 +271,6 @@ void MainWindow::launchCommand()
             box.setWindowTitle(tr("Commande exécutée"));
             box.setWindowIcon(icon);
             box.exec();
-
-            // set the combobox to null
-            this->m_ui->combo_command->setCurrentIndex(0);
         } else {
             // command nok
             QMessageBox::critical(this, tr("Erreur commande"), tr("Erreur lors de l'exécution de la commande. Veuillez regarder les logs pour plus de détails."));
