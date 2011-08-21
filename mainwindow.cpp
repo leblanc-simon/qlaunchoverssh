@@ -36,11 +36,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QLineEdit>
 #include <QLabel>
 #include <QMessageBox>
+#include <QSizePolicy>
 
 #include "kssh.h"
 #include "kconfig.h"
 #include "kcommand.h"
 #include "klog.h"
+#include "kmessagebox.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -260,7 +262,7 @@ void MainWindow::launchCommand()
             Klog::info(ssh.getReturn());
 
             // show informative box
-            QMessageBox box;
+            KMessageBox box;
             QIcon icon;
             icon.addPixmap(QPixmap(QString::fromUtf8(":/new/images/applet-gnome-sshmenu-icone-6595-16.png")));
             box.setText(tr("Votre commande a été exécuté avec succès."));

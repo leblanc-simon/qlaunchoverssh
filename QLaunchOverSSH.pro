@@ -15,7 +15,8 @@ SOURCES += main.cpp \
     kcommand.cpp \
     kparameter.cpp \
     about.cpp \
-    passphrase.cpp
+    passphrase.cpp \
+    kmessagebox.cpp
 HEADERS += mainwindow.h \
     kssh.h \
     klog.h \
@@ -25,7 +26,8 @@ HEADERS += mainwindow.h \
     kparameter.h \
     about.h \
     passphrase.h \
-    version.h
+    version.h \
+    kmessagebox.h
 FORMS += mainwindow.ui \
     about.ui \
     passphrase.ui
