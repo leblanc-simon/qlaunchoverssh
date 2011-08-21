@@ -34,9 +34,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <QList>
 #include <QLineEdit>
+#include <QCompleter>
+#include <QStringList>
 #include <QLabel>
 #include <QMessageBox>
 #include <QSizePolicy>
+#include <QSettings>
+#include <QFile>
 
 #include "kssh.h"
 #include "kconfig.h"
@@ -126,6 +130,50 @@ void MainWindow::initShow()
 
 
 /**
+ * save parameters in a file for re-use
+ * @param  Kcommand     command     The command for which you save the parameter's value
+ * @param  Kparameter   parameter   The parameter for which you save the value
+ * @param  QString      value       The value to save
+ */
+void MainWindow::saveParameter(Kcommand command, Kparameter parameter, QString value)
+{
+    if (value != "") {
+        QSettings settings(AUTOCOMPLETE_FILE, QSettings::IniFormat);
+        QString key = QString("%1").arg(command.getId()) + "/" + QString("%1").arg(parameter.getId());
+        QString list_commands = settings.value(key, "").toString();
+
+        if (list_commands.contains(";" + value + ";", Qt::CaseInsensitive) == false) {
+            if (list_commands.endsWith(";") == false) {
+                list_commands += ";";
+            }
+            list_commands += value + ";";
+
+            settings.beginGroup(QString("%1").arg(command.getId()));
+            settings.setValue(QString("%1").arg(parameter.getId()), list_commands);
+            settings.endGroup();
+        }
+    }
+}
+
+
+/**
+ * Get the list of previous parameters enter for the command
+ * @param  Kcommand     command     The command for which you save the parameter's value
+ * @param  Kparameter   parameter   The parameter for which you save the value
+ * @return QStringList              The previous parameters' values
+ */
+QStringList MainWindow::getParameters(Kcommand command, Kparameter parameter)
+{
+    QStringList list_word;
+    QSettings settings(AUTOCOMPLETE_FILE, QSettings::IniFormat);
+    QString key = QString("%1").arg(command.getId()) + "/" + QString("%1").arg(parameter.getId());
+    list_word = settings.value(key, "").toString().split(";", QString::SkipEmptyParts, Qt::CaseInsensitive);
+
+    return list_word;
+}
+
+
+/**
  * action to do when the user select a command [slot]
  * @param   int     id      the current index of the combobox
  */
@@ -157,6 +205,8 @@ void MainWindow::selectCommand(int id)
 
     int height = MAINWINDOW_BEGIN_HEIGHT;
 
+    QCompleter *completer;
+
     // add the widget and the label
     for (int i = 0; i < nb_parameter; i++) {
         // add widget
@@ -164,9 +214,14 @@ void MainWindow::selectCommand(int id)
 
         // customize the widget
         Kparameter parameter = parameters.at(i);
+
+        completer = new QCompleter(this->getParameters(command, parameter), this->m_ui->centralWidget);
+        completer->setCaseSensitivity(Qt::CaseInsensitive);
+
         this->m_widget.at(i)->setGeometry(MAINWINDOW_WIDGET_X, height, MAINWINDOW_WIDGET_WIDTH, MAINWINDOW_WIDGET_HEIGHT);
         this->m_widget.at(i)->setToolTip(parameter.getExplain());
         this->m_widget.at(i)->setStatusTip(parameter.getExplain());
+        this->m_widget.at(i)->setCompleter(completer);
         this->m_widget.at(i)->show();
 
         // add the label
@@ -260,6 +315,11 @@ void MainWindow::launchCommand()
             // command ok
             Klog::info(ssh.getLastCommand());
             Klog::info(ssh.getReturn());
+
+            // save last parameter
+            for (int j = 0; j < nb_parameter; j++) {
+                this->saveParameter(command, command.getParameter(j), this->m_widget.at(j)->text());
+            }
 
             // show informative box
             KMessageBox box;

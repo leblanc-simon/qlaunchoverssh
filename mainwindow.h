@@ -43,12 +43,17 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MAINWINDOW_LABEL_WIDTH      110
 #define MAINWINDOW_LABEL_RECTIF     3
 
+#define AUTOCOMPLETE_FILE           QString("./qlaunchoverssh.ini")
+
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QCompleter>
 #include <QLabel>
 #include <QList>
+#include <QStringList>
 
 #include "kcommand.h"
+#include "kparameter.h"
 
 namespace Ui {
     class MainWindow;
@@ -66,6 +71,8 @@ protected:
     void init();
     void initCommands();
     void initShow();
+    void saveParameter(Kcommand command, Kparameter parameter, QString value);
+    QStringList getParameters(Kcommand command, Kparameter parameter);
 
 private:
     Ui::MainWindow*     m_ui;
