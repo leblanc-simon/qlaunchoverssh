@@ -28,6 +28,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "about.h"
 #include "ui_about.h"
+#include "version.h"
 
 #include <QLabel>
 #include <QPixmap>
@@ -63,6 +64,9 @@ void About::init()
 {
     QObject::connect(this->m_ui->buttonBox, SIGNAL(accepted()), this, SLOT(close()));
     QObject::connect(this->m_ui->buttonBox, SIGNAL(rejected()), this, SLOT(close()));
+
+    // On applique le numero de version
+    this->m_ui->label->setText(this->m_ui->label->text().replace(QString("%%VERSION%%"), QString(VER_PRODUCTVERSION_STR)));
 }
 
 
