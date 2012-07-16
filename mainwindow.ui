@@ -26,7 +26,7 @@
    <string>QLaunchOverSSH</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ressources.qrc">
+   <iconset>
     <normaloff>:/new/images/applet-gnome-sshmenu-icone-6595-16.png</normaloff>:/new/images/applet-gnome-sshmenu-icone-6595-16.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -104,7 +104,7 @@
      <x>0</x>
      <y>0</y>
      <width>450</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -117,6 +117,9 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="action_import"/>
+    <addaction name="action_export"/>
+    <addaction name="separator"/>
     <addaction name="action_close"/>
    </widget>
    <addaction name="menuFichier"/>
@@ -147,10 +150,18 @@
     <string>Alt+Q</string>
    </property>
   </action>
+  <action name="action_import">
+   <property name="text">
+    <string>Importer...</string>
+   </property>
+  </action>
+  <action name="action_export">
+   <property name="text">
+    <string>Exporter...</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

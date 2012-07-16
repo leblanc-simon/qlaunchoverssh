@@ -84,7 +84,8 @@ private slots:
     void selectCommand(int id);
     void launchCommand();
     void showAbout();
-
+    void dump();
+    void load();
 };
 
 #endif // MAINWINDOW_H

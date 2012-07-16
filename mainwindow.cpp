@@ -41,12 +41,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QSizePolicy>
 #include <QSettings>
 #include <QFile>
+#include <QFileDialog>
 
 #include "kssh.h"
 #include "kconfig.h"
 #include "kcommand.h"
 #include "klog.h"
 #include "kmessagebox.h"
+#include "kdata.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -95,6 +97,10 @@ void MainWindow::init()
     QObject::connect(this->m_ui->action_about, SIGNAL(triggered()), this, SLOT(showAbout()));
 
     QObject::connect(this->m_ui->action_close, SIGNAL(triggered()), this, SLOT(close()));
+
+    QObject::connect(this->m_ui->action_export, SIGNAL(triggered()), this, SLOT(dump()));
+
+    QObject::connect(this->m_ui->action_import, SIGNAL(triggered()), this, SLOT(load()));
 }
 
 
@@ -354,4 +360,54 @@ void MainWindow::showAbout()
 
     About* w = new About(this);
     w->show();
+}
+
+
+/**
+ * dump the database [slot]
+ */
+void MainWindow::dump()
+{
+    QString filename = QFileDialog::getSaveFileName(this, tr("Enregistrer l'export sous ..."), QDir::homePath(), "*.xml");
+
+    if (filename.isEmpty()) {
+        return;
+    }
+
+    if (filename.endsWith(".xml", Qt::CaseInsensitive) == false) {
+        filename += ".xml";
+    }
+
+    Kdata* data = new Kdata(filename);
+
+    if (data->dump() == false) {
+        QMessageBox::critical(this, tr("Erreur"), data->getErrors(), QMessageBox::Ok);
+    } else {
+        QMessageBox::information(this, tr("Exportation terminée"), tr("L'exportation s'est bien déroulée"), QMessageBox::Ok);
+    }
+
+    delete data;
+}
+
+
+/**
+ * load a xml in the database [slot]
+ */
+void MainWindow::load()
+{
+    QString filename = QFileDialog::getOpenFileName(this, tr("Sélectionnez le fichier à importer..."), QDir::homePath(), "*.xml");
+
+    if (QFile::exists(filename) == false) {
+        return;
+    }
+
+    Kdata* data =  new Kdata(filename);
+
+    if (data->load() == false) {
+        QMessageBox::critical(this, tr("Erreur"), data->getErrors(), QMessageBox::Ok);
+    } else {
+        QMessageBox::information(this, tr("Importation terminée"), tr("L'importation s'est bien déroulée"), QMessageBox::Ok);
+    }
+
+    delete data;
 }

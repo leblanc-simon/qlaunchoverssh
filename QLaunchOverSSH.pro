@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     kparameter.cpp \
     about.cpp \
     passphrase.cpp \
-    kmessagebox.cpp
+    kmessagebox.cpp \
+    kdata.cpp
 HEADERS += mainwindow.h \
     kssh.h \
     klog.h \
@@ -27,12 +28,12 @@ HEADERS += mainwindow.h \
     about.h \
     passphrase.h \
     version.h \
-    kmessagebox.h
+    kmessagebox.h \
+    kdata.h
 FORMS += mainwindow.ui \
     about.ui \
     passphrase.ui
-LIBS += -lssh \
-    -L/home/leviathan/compilation/libssh-0.4.6/include
+LIBS += -lssh
 #DEFINES += DEBUG
 RESOURCES += ressources.qrc
 

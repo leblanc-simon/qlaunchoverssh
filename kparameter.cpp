@@ -91,7 +91,7 @@ bool Kparameter::insert()
     }
 
     QString sql = QString("INSERT INTO parameter (name, position, id_command, explain, required) "
-                          "VALUES ('%1', '%2', '%3')")
+                          "VALUES ('%1', '%2', '%3', '%4', '%5')")
                     .arg(Ksql::clean(this->m_name))
                     .arg(this->m_position)
                     .arg(this->m_command_id)
