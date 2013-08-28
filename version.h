@@ -29,14 +29,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef VERSION_H
 #define VERSION_H
 
-#define VER_FILEVERSION             1,3,0,0
-#define VER_FILEVERSION_STR         "1.3.0.0\0"
+#define VER_FILEVERSION             1,4,0,0
+#define VER_FILEVERSION_STR         "1.4.0.0\0"
 
-#define VER_PRODUCTVERSION          1,3,0,0
-#define VER_PRODUCTVERSION_STR      "1.3.0\0"
+#define VER_PRODUCTVERSION          1,4,0,0
+#define VER_PRODUCTVERSION_STR      "1.4.0\0"
 
 #define VER_COMPANYNAME_STR         "Simon Leblanc"
-#define VER_LEGALCOPYRIGHT_STR      "Copyright (c) 2010-2011 Simon Leblanc (licence BSD)"
+#define VER_LEGALCOPYRIGHT_STR      "Copyright (c) 2010-2013 Simon Leblanc (licence BSD)"
 #define VER_COMPANYDOMAIN_STR       "http://www.leblanc-simon.fr"
 #define VER_FILEDESCRIPTION_STR     "Launch command over SSH"
 #define VER_INTERNALNAME_STR        "QLaunchOverSSH"
