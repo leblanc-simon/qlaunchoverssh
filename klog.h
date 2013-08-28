@@ -36,7 +36,9 @@ class Klog
 protected:
     static void write(QString msg, QString type);
 public:
+#ifdef DEBUG
     static void debug(QString msg);
+#endif
     static void warning(QString msg);
     static void error(QString msg);
     static void info(QString msg);

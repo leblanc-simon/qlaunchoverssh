@@ -56,16 +56,16 @@ void Klog::write(QString msg, QString type)
 }
 
 
+#ifdef DEBUG
 /**
  * Write a debug message into the log file (only if the program is make with -DDEBUG)
  * @param   QString     msg     the messageto write
  */
 void Klog::debug(QString msg)
 {
-#ifdef DEBUG
     Klog::write(msg, "debug");
-#endif
 }
+#endif
 
 
 /**

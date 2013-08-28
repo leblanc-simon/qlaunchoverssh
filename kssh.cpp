@@ -127,32 +127,42 @@ bool Kssh::launch_connect(QString server, QString login, int port)
     
     // define the log level
     if (ssh_options_set(this->m_session, SSH_OPTIONS_LOG_VERBOSITY, &log) < 0) {
+#ifdef DEBUG
         Klog::debug("impossible to set SSH_OPTIONS_LOG_VERBOSITY");
+#endif
         return false;
     }
 
     // define the login
     if (ssh_options_set(this->m_session, SSH_OPTIONS_USER, login.toStdString().data()) < 0) {
+#ifdef DEBUG
         Klog::debug("impossible to set SSH_OPTIONS_USER");
+#endif
         return false;
     }
 
     // define the host
     if (ssh_options_set(this->m_session, SSH_OPTIONS_HOST, server.toStdString().data()) < 0) {
+#ifdef DEBUG
         Klog::debug("impossible to set SSH_OPTIONS_HOST");
+#endif
         return false;
     }
 
     // define the port
     if (ssh_options_set(this->m_session, SSH_OPTIONS_PORT, &port) < 0) {
+#ifdef DEBUG
         Klog::debug("impossible to set SSH_OPTIONS_PORT");
+#endif
         return false;
     }
 
     // define the knownhosts filename
     QString known_hosts = Kconfig::getKnownHosts();
     if (ssh_options_set(this->m_session, SSH_OPTIONS_KNOWNHOSTS, known_hosts.toStdString().data()) < 0) {
+#ifdef DEBUG
         Klog::debug("impossible to set SSH_OPTIONS_KNOWNHOSTS");
+#endif
         return false;
     }
 
@@ -182,7 +192,9 @@ bool Kssh::check_known_host()
     hlen = ssh_get_pubkey_hash(this->m_session, &hash);
 
     if (hlen < 0) {
+#ifdef DEBUG
         Klog::debug("no public key for this server");
+#endif
         return false;
     }
 
@@ -207,14 +219,18 @@ bool Kssh::check_known_host()
         case SSH_SERVER_FILE_NOT_FOUND:
             Klog::warning("Could not find known host file. This file will be automatically created.");
             if (ssh_write_knownhost(this->m_session) < 0) {
+#ifdef DEBUG
                 Klog::debug("impossible to write the knowhosts");
+#endif
             }
             break;
 
         case SSH_SERVER_NOT_KNOWN:
             Klog::warning("The server is unknown. This new key will be written on disk for further usage.");
             if (ssh_write_knownhost(this->m_session) < 0) {
+#ifdef DEBUG
                 Klog::debug("impossible to write the knowhosts");
+#endif
             }
             break;
 
@@ -304,7 +320,9 @@ bool Kssh::authenticatePassword(QString password)
         return true;
     } else if (auth == SSH_AUTH_DENIED || auth == SSH_AUTH_PARTIAL) {
         // try with interactive
+#ifdef DEBUG
         Klog::debug("Authentication fail with password, try with interactive");
+#endif
         return this->authenticatePasswordInteractive(password);
     } else if (auth == SSH_AUTH_ERROR) {
         Klog::error(QString("Fatal error in authenticated with password : ") + QString(ssh_get_error(this->m_session)));
@@ -401,7 +419,9 @@ bool Kssh::launch(QString command)
 
         return false;
     } else {
+#ifdef DEBUG
         Klog::debug(QString("Execution de la commande : ") + this->m_command);
+#endif
 
         // read the buffer
         char *buf = NULL;
