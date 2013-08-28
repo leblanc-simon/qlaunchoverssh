@@ -76,7 +76,7 @@ public:
             bool                getUseKey()     { return this->m_use_key; }
             QString             getCommand()    { return this->m_command; }
             QString             getPasswd()     { return this->m_passwd; }
-            QList<Kparameter>   getParameters() { return this->m_parameters; };
+            QList<Kparameter>   getParameters() { return this->m_parameters; }
 
             bool                load(int id);
 
