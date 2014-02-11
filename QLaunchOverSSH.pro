@@ -3,7 +3,8 @@
 # -------------------------------------------------
 QT += network \
     sql \
-    xml
+    xml \
+    widgets
 TARGET = QLaunchOverSSH
 TEMPLATE = app
 SOURCES += main.cpp \

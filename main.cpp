@@ -26,7 +26,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVE
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <QtGui/QApplication>
+#include <QApplication>
 #include <QTextCodec>
 #include <QString>
 #include <QDebug>
@@ -41,7 +41,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
     Kconfig::load(CONFIG_FILE);
 
     Ksql sql;
