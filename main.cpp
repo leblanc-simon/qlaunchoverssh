@@ -41,6 +41,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+#if QT_VERSION < 0x05FF00
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
+#endif
+
     Kconfig::load(CONFIG_FILE);
 
     Ksql sql;
